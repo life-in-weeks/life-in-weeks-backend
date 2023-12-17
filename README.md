@@ -29,10 +29,11 @@
     ```bash
     cd src
     ```
-   
 
 6. Copy .env.example to .env
-
+   ```bash
+   cp .env.example .env
+   ```
 
 7. set migration:
 
@@ -45,8 +46,8 @@
     ```bash
     sudo chmod 777 -R ./
     ```
-#
-The application is available in http://localhost:8080/
+---
+The application is available at http://localhost:8080/
 
 ### Project Description: Life in Weeks Backend REST API
 
