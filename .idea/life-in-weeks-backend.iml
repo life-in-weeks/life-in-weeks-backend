@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/tests/Unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/carbonphp/carbon-doctrine-types" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
