@@ -59,4 +59,3 @@ to facilitate the functionalities required for the Life in Weeks application.
 It handles data processing, communication with the database, and serves
 as the intermediary between the frontend and the server.
 
-#

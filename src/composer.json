@@ -1,7 +1,7 @@
 {
     "name": "life-in-weeks/backend",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "life-in-weeks/backend REST API",
     "keywords": [
         "framework",
         "laravel"
