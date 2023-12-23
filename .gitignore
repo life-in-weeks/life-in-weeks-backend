@@ -2,3 +2,5 @@
 mysql
 postgresql
 node_modules
+/.idea
+/.vscode
