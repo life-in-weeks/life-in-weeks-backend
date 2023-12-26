@@ -21,4 +21,6 @@ Route::group(
     }
 );
 
-//Route::post("/auth/register", RegisterController::class);
+Route::get("/greeting", function () {
+    return "Hello World";
+})->middleware("auth:api");

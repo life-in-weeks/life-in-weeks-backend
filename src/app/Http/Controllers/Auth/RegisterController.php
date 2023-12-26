@@ -13,7 +13,6 @@ class RegisterController extends Controller
     public function __invoke(RegisterRequest $request)
     {
         $data = $request->validated();
-        $data["password"] = Hash::make($data["password"]);
         $user = User::create($data);
 
         return $user instanceof User ? new UserResource($user) : $user;
