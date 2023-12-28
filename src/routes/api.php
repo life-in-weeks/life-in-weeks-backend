@@ -22,5 +22,5 @@ Route::group(
 );
 
 Route::get("/greeting", function () {
-    return "Hello World";
+    return auth()->user();
 })->middleware("auth:api");

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-class User extends Authenticatable
+class UserAuth extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = ["username", "email", "password"];
+    protected $table = "user_auth";
 
     /**
      * The attributes that should be hidden for serialization.
