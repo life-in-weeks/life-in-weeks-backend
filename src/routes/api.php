@@ -20,7 +20,3 @@ Route::group(
         Route::post("/register", RegisterController::class);
     }
 );
-
-Route::get("/greeting", function () {
-    return auth()->user();
-})->middleware("auth:api");
