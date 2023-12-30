@@ -17,6 +17,6 @@ class RegisterController extends Controller
 
         return $userAuth instanceof UserAuth
             ? new UserAuthResource($userAuth)
-            : $user;
+            : $userAuth;
     }
 }
