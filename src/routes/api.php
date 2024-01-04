@@ -23,9 +23,10 @@ Route::group(
 
 Route::group(["namespace" => "\App\Http\Controllers\Profile"], function () {
     Route::get("/profile", IndexController::class)->middleware("auth:api");
+    Route::post("/profilee", StoreController::class);
 });
 
-Route::get("/greeting", function () {
+Route::post("/greeting", function () {
     $userData = Profile::first();
     return $userData->userAuth;
 });
