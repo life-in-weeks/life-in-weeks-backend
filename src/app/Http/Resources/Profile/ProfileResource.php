@@ -13,7 +13,7 @@ class ProfileResource extends JsonResource
             "date_of_birth" => $this->date_of_birth,
             "name" => $this->name,
             "lastname" => $this->lastname,
-            "user" => new UserResource($this->userAuth),
+            "user" => new UserResource($this->user),
         ];
     }
 }

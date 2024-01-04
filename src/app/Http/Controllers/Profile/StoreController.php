@@ -12,7 +12,7 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $data["user_auth_id"] = auth()->id();
+        $data["user_id"] = auth()->id();
         $profile = Profile::create($data);
         return $profile instanceof Profile
             ? new ProfileResource($profile)

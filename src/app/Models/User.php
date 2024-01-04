@@ -23,7 +23,7 @@ class User extends Authenticatable
         return $this->where("username", $username)->first();
     }
 
-    public function userData()
+    public function profile()
     {
         return $this->hasOne(Profile::class);
     }

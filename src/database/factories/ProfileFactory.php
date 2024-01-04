@@ -21,7 +21,7 @@ class ProfileFactory extends Factory
             "date_of_birth" => $this->faker->date,
             "name" => $this->faker->name,
             "lastname" => $this->faker->lastName,
-            "user_auth_id" => User::factory(),
+            "user_id" => User::factory(),
         ];
     }
 }
