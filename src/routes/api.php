@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
-use Illuminate\Http\Request;
+use App\Models\UserData;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +20,12 @@ Route::group(
         Route::post("/register", RegisterController::class);
     }
 );
+
+Route::group(["namespace" => "\App\Http\Controllers\User"], function () {
+    Route::get("/user", IndexController::class)->middleware("auth:api");
+});
+
+Route::get("/greeting", function () {
+    $userData = UserData::first();
+    return $userData->userAuth;
+});
