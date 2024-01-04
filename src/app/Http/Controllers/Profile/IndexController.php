@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\User\UserDataResource;
+use App\Http\Resources\Profile\UserDataResource;
 use App\Models\Profile;
 
 class IndexController extends Controller

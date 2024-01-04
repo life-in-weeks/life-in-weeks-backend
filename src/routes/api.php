@@ -21,8 +21,8 @@ Route::group(
     }
 );
 
-Route::group(["namespace" => "\App\Http\Controllers\User"], function () {
-    Route::get("/user", IndexController::class)->middleware("auth:api");
+Route::group(["namespace" => "\App\Http\Controllers\Profile"], function () {
+    Route::get("/profile", IndexController::class)->middleware("auth:api");
 });
 
 Route::get("/greeting", function () {

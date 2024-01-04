@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Http\Resources\User\UserAuthResource;
+use App\Http\Resources\User\UserResource;
 use App\Models\User;
 
 class RegisterController extends Controller
@@ -14,7 +14,7 @@ class RegisterController extends Controller
         $data = $request->validated();
         $userAuth = User::create($data);
         return $userAuth instanceof User
-            ? new UserAuthResource($userAuth)
+            ? new UserResource($userAuth)
             : $userAuth;
     }
 }
