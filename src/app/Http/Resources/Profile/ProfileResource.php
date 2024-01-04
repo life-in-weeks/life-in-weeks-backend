@@ -12,8 +12,8 @@ class ProfileResource extends JsonResource
             "id" => $this->id,
             "date_of_birth" => $this->date_of_birth,
             "name" => $this->name,
-            "user_auth_id" => $this->user_auth_id,
-            "user_auth" => new UserResource($this->userAuth),
+            "lastname" => $this->lastname,
+            "user" => new UserResource($this->userAuth),
         ];
     }
 }
