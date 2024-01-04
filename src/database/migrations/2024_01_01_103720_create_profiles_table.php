@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create("user_data", function (Blueprint $table) {
+        Schema::create("profiles", function (Blueprint $table) {
             $table->id();
             $table->date("date_of_birth");
             $table->string("name");
@@ -18,7 +18,7 @@ return new class extends Migration {
             $table
                 ->foreignId("user_auth_id")
                 ->constrained()
-                ->on("user_auth")
+                ->on("users")
                 ->onDelete("cascade");
             $table->timestamps();
             $table->softDeletes();
@@ -30,6 +30,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists("user_data");
+        Schema::dropIfExists("profiles");
     }
 };

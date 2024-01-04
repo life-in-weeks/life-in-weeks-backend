@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\UserAuth;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\=UserData>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\=Profile>
  */
-class UserDataFactory extends Factory
+class ProfileFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,7 +21,7 @@ class UserDataFactory extends Factory
             "date_of_birth" => $this->faker->date,
             "name" => $this->faker->name,
             "lastname" => $this->faker->lastName,
-            "user_auth_id" => UserAuth::factory(),
+            "user_auth_id" => User::factory(),
         ];
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserAuth;
-use App\Models\UserData;
+use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([UserSeeder::class]);
+        $this->call([ProfileSeeder::class]);
     }
 }

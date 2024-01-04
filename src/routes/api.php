@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
-use App\Models\UserData;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +26,6 @@ Route::group(["namespace" => "\App\Http\Controllers\User"], function () {
 });
 
 Route::get("/greeting", function () {
-    $userData = UserData::first();
+    $userData = Profile::first();
     return $userData->userAuth;
 });

@@ -7,12 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-class UserAuth extends Authenticatable
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = ["username", "email", "password"];
-    protected $table = "user_auth";
     protected $hidden = ["password"];
     protected $casts = [
         "email_verified_at" => "datetime",
@@ -26,6 +25,6 @@ class UserAuth extends Authenticatable
 
     public function userData()
     {
-        return $this->hasOne(UserData::class);
+        return $this->hasOne(Profile::class);
     }
 }
