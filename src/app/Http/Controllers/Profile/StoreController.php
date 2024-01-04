@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\StoreRequest;
+use App\Http\Resources\Profile\ProfileResource;
 use App\Models\Profile;
 
 class StoreController extends Controller
@@ -13,6 +14,8 @@ class StoreController extends Controller
         $data = $request->validated();
         $data["user_auth_id"] = auth()->id();
         $profile = Profile::create($data);
-        dd($profile);
+        return $profile instanceof Profile
+            ? new ProfileResource($profile)
+            : $profile;
     }
 }
