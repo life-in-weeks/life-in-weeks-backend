@@ -24,6 +24,7 @@ Route::group(
 Route::group(["namespace" => "\App\Http\Controllers\Profile"], function () {
     Route::get("/profile", IndexController::class)->middleware("auth:api");
     Route::post("/profile", StoreController::class);
+    Route::get("/profile/{profile}", ShowController::class);
 });
 
 Route::post("/greeting", function () {
