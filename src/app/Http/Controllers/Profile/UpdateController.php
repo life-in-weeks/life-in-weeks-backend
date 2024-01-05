@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\UpdateRequest;
 use App\Http\Resources\Profile\ProfileResource;
 use App\Models\Profile;
-use App\Models\User;
 
 class UpdateController extends Controller
 {
