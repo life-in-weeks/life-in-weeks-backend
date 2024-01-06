@@ -23,7 +23,12 @@ Route::group(
 
 Route::group(["namespace" => "\App\Http\Controllers\Profile"], function () {
     Route::get("/profile", IndexController::class)->middleware("auth:api");
+    Route::post(
+        "/profile/upload-avatar",
+        UploadAvatarController::class
+    )->middleware("auth:api");
     Route::post("/profile", StoreController::class)->middleware("auth:api");
+
     Route::get("/profile/{profile}", ShowController::class)->middleware(
         "auth:api"
     );
