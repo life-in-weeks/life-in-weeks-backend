@@ -14,15 +14,15 @@ class UploadAvatarService
             $profile = auth()->user()->profile;
             $avatar = $data["images"][0];
             $path = $avatar->store("avatars", "public");
-            if ($profile->image) {
-                $profile->image->update([
+            if ($profile->avatar) {
+                $profile->avatar->update([
                     "url" => Storage::url($path),
                 ]);
             } else {
                 $image = new Image(["url" => Storage::url($path)]);
                 $profile->image()->save($image);
             }
-            return $profile->image;
+            return $profile->avatar;
         } catch (\Exception $e) {
             return $e;
         }
