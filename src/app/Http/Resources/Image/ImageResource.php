@@ -4,6 +4,7 @@ namespace App\Http\Resources\Image;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class ImageResource extends JsonResource
 {
@@ -15,7 +16,7 @@ class ImageResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "url" => $this->url,
+            "url" => url($this->url),
             "updated_at" => $this->updated_at,
         ];
     }
