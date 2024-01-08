@@ -13,7 +13,19 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         $data["user_id"] = auth()->id();
-        $profile = Profile::create($data);
+
+        if (!auth()->user()->profile) {
+            auth()->user()->profile;
+            $profile = Profile::create($data);
+        } else {
+            return response()->json(
+                [
+                    "message" => "Profile already exists for this user.",
+                ],
+                409
+            );
+        }
+
         return $profile instanceof Profile
             ? new ProfileResource($profile)
             : $profile;
