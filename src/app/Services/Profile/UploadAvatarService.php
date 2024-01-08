@@ -3,12 +3,9 @@
 namespace App\Services\Profile;
 
 use App\Models\Image;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
-
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
+use App\Components\ImageConverter;
 
 class UploadAvatarService
 {
@@ -21,20 +18,15 @@ class UploadAvatarService
             $avatar = $data["images"][0];
             $path = $avatar->store("avatars", "public");
 
-            $image = $manager->read("storage/" . $path);
-            $encoded = $image->toWebp(60);
-            Storage::put("public/avatars/{$avatar->hashName()}.webp", $encoded);
-
-            Storage::disk("public")->delete($path);
-            $webpPath = "avatars/{$avatar->hashName()}.webp";
-            $webpUrl = Storage::url($webpPath);
+            $converter = new ImageConverter();
+            $webUrl = $converter->convertToWebP($path, $avatar, "avatars/");
 
             if ($profile->avatar) {
                 $profile->avatar->update([
-                    "url" => $webpUrl,
+                    "url" => $webUrl,
                 ]);
             } else {
-                $image = new Image(["url" => $webpUrl]);
+                $image = new Image(["url" => $webUrl]);
                 $profile->image()->save($image);
             }
             return $profile->avatar;
