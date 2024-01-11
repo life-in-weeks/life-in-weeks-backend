@@ -7,7 +7,7 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
 class ImageConverter
 {
-    public $manager;
+    protected $manager;
     public function __construct()
     {
         $this->manager = new ImageManager(new Driver());

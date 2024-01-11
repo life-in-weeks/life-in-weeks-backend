@@ -3,16 +3,12 @@
 namespace App\Services\Profile;
 
 use App\Models\Image;
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Imagick\Driver;
 use App\Components\ImageConverter;
 
 class UploadAvatarService
 {
     public function __invoke($data)
     {
-        $manager = new ImageManager(new Driver());
-
         try {
             $profile = auth()->user()->profile;
             $avatar = $data["images"][0];

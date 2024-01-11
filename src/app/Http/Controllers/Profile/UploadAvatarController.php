@@ -16,6 +16,7 @@ class UploadAvatarController extends Controller
     ) {
         $data = $request->validated();
         $avatar = $service($data);
+
         return $avatar instanceof Image ? new ImageResource($avatar) : $avatar;
     }
 }
