@@ -23,7 +23,7 @@ class UploadAvatarService
                 ]);
             } else {
                 $image = new Image(["url" => $webUrl]);
-                $profile->image()->save($image);
+                $profile->avatar()->save($image);
             }
             return $profile->avatar;
         } catch (\Exception $e) {
