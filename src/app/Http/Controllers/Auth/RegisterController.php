@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
-use mysql_xdevapi\Exception;
 
 class RegisterController extends Controller
 {
