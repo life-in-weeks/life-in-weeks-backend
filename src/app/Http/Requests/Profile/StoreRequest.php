@@ -23,8 +23,8 @@ class StoreRequest extends FormRequest
     {
         return [
             "date_of_birth" => "date_format:Y-m-d|required",
-            "name" => "string",
-            "lastname" => "string",
+            "name" => "string|required",
+            "lastname" => "string|required",
         ];
     }
 }

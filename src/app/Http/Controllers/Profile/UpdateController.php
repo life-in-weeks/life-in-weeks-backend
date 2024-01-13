@@ -14,6 +14,7 @@ class UpdateController extends Controller
         $profile = auth()->user()->profile;
         $data = $request->validated();
         $profile->update($data);
+
         return $profile instanceof Profile
             ? new ProfileResource($profile)
             : $profile;

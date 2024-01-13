@@ -6,19 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
+use App\Services\Auth\RegisterService;
 
 class RegisterController extends Controller
 {
-    public function __invoke(RegisterRequest $request)
+    public function __invoke(RegisterRequest $request, RegisterService $service)
     {
-        try {
-            $data = $request->validated();
-            $userAuth = User::create($data);
-            return $userAuth instanceof User
-                ? new UserResource($userAuth)
-                : $userAuth;
-        } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage()], 409);
-        }
+        $data = $request->validated();
+        $user = $service($data);
+
+        return $user instanceof User ? new UserResource($user) : $user;
     }
 }
