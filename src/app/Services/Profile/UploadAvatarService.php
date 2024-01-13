@@ -24,7 +24,9 @@ class UploadAvatarService
             } else {
                 $image = new Image(["url" => $webUrl]);
                 $profile->avatar()->save($image);
+                $profile->refresh();
             }
+
             return $profile->avatar;
         } catch (\Exception $e) {
             return $e;
