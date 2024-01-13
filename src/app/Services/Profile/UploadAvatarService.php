@@ -2,8 +2,8 @@
 
 namespace App\Services\Profile;
 
+use App\Components\ImageConverter\ImageConverter;
 use App\Models\Image;
-use App\Components\ImageConverter;
 
 class UploadAvatarService
 {

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Components;
+namespace App\Components\ImageConverter;
 
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\ImageManager;
+
 class ImageConverter
 {
     protected $manager;
