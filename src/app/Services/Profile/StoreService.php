@@ -8,11 +8,7 @@ class StoreService
 {
     public function __invoke($data)
     {
-        $data["user_id"] = auth()->id();
-        if (!auth()->user()->profile) {
-            $profile = Profile::create($data);
-            return $profile;
-        } else {
+        if (auth()->user()->profile) {
             return response()->json(
                 [
                     "message" => "Profile already exists for this user.",
@@ -20,5 +16,8 @@ class StoreService
                 409
             );
         }
+
+        $data["user_id"] = auth()->id();
+        return Profile::create($data);
     }
 }

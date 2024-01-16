@@ -9,6 +9,7 @@ use Intervention\Image\ImageManager;
 class ImageConverter
 {
     protected $manager;
+
     public function __construct()
     {
         $this->manager = new ImageManager(new Driver());
