@@ -4,6 +4,7 @@ namespace App\Services\Profile;
 
 use App\Components\ImageConverter\ImageConverter;
 use App\Models\Image;
+use Illuminate\Support\Facades\Storage;
 
 class UploadAvatarService
 {
@@ -12,12 +13,15 @@ class UploadAvatarService
         try {
             $profile = auth()->user()->profile;
             $avatar = $data["images"][0];
-            $path = $avatar->store("avatars", "public");
+            $path = Storage::disk("public")->put("avatars", $avatar);
 
             $converter = new ImageConverter();
             $webUrl = $converter->convertToWebP($path, $avatar, "avatars/");
 
             if ($profile->avatar) {
+                Storage::disk("public")->delete(
+                    str_replace("storage/", "", $profile->avatar->url)
+                );
                 $profile->avatar->update([
                     "url" => $webUrl,
                 ]);
