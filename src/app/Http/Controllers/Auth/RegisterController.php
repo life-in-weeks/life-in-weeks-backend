@@ -30,7 +30,10 @@ use App\Services\Auth\RegisterService;
  *         response=409,
  *         description="A user with the provided username is already registered",
  *     ),
- *
+ *     @OA\Response(
+ *          response=422,
+ *          description="Validation error",
+ *     ),
  * ),
  */
 class RegisterController extends Controller

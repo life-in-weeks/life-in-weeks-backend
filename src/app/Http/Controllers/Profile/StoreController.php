@@ -16,13 +16,7 @@ use App\Services\Profile\StoreService;
  *
  *     @OA\RequestBody(
  *         @OA\JsonContent(
- *             allOf={
- *                 @OA\Schema(
- *                     @OA\Property(property="date_of_birth", type="string", example="2001-11-11"),
- *                     @OA\Property(property="name", type="string", example="Slark"),
- *                     @OA\Property(property="lastname", type="string", example="YaPolzu"),
- *                 )
- *             }
+ *             ref="#/components/schemas/ProfileStoreRequest"
  *         )
  *     ),
  *
@@ -39,7 +33,10 @@ use App\Services\Profile\StoreService;
  *         response=409,
  *         description="Profile already exists for this user",
  *     ),
- *
+ *     @OA\Response(
+ *          response=422,
+ *          description="Validation error",
+ *     ),
  * ),
  */
 
