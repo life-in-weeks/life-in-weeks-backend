@@ -12,7 +12,7 @@
                     "Auth"
                 ],
                 "summary": "Get tokens",
-                "operationId": "de0f0bc776462cff6b7a46cc328af173",
+                "operationId": "be80d0c392c6993a59bd1a2e1801c3d2",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -170,7 +170,104 @@
                         }
                     },
                     "409": {
-                        "description": "A user with the provided username is already registered."
+                        "description": "A user with the provided username is already registered"
+                    }
+                }
+            }
+        },
+        "/api/profile": {
+            "post": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Create profile of user",
+                "operationId": "d18064348bf3a6f8f1acdd465b861e6d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "date_of_birth": {
+                                                "type": "string",
+                                                "example": "2001-11-11"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Slark"
+                                            },
+                                            "lastname": {
+                                                "type": "string",
+                                                "example": "YaPolzu"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "The user has successfully created profile",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "11"
+                                                },
+                                                "date_of_birth": {
+                                                    "type": "string",
+                                                    "example": "2001-11-11"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Slark"
+                                                },
+                                                "lastname": {
+                                                    "type": "string",
+                                                    "example": "YaPolzu"
+                                                },
+                                                "user": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": "11"
+                                                        },
+                                                        "username": {
+                                                            "type": "string",
+                                                            "example": "SlarkDotka"
+                                                        },
+                                                        "email": {
+                                                            "type": "string",
+                                                            "example": "freshmeat@gmail.com",
+                                                            "nullable": true
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "avatar": {
+                                                    "type": "string",
+                                                    "example": "11",
+                                                    "nullable": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Profile already exists for this user"
                     }
                 }
             }

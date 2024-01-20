@@ -38,7 +38,7 @@ use App\Services\Auth\RegisterService;
  *     ),
  *     @OA\Response(
  *         response=409,
- *         description="A user with the provided username is already registered.",
+ *         description="A user with the provided username is already registered",
  *     ),
  *
  * ),
