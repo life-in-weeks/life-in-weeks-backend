@@ -349,7 +349,12 @@
                         "$ref": "#/components/schemas/UserResource"
                     },
                     "avatar": {
-                        "$ref": "#/components/schemas/ImageResource"
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/ImageResource"
+                            }
+                        ],
+                        "nullable": true
                     }
                 },
                 "type": "object"

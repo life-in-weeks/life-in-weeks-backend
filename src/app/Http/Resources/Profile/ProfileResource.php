@@ -17,7 +17,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(property="name", type="string", example="Slark"),
  *     @OA\Property(property="lastname", type="string", example="Puchina"),
  *     @OA\Property(property="user", ref="#/components/schemas/UserResource"),
- *     @OA\Property(property="avatar", ref="#/components/schemas/ImageResource"),
+ *     @OA\Property(property="avatar", ref="#/components/schemas/ImageResource", nullable=true),
  * )
  */
 
