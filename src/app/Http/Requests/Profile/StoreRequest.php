@@ -4,6 +4,17 @@ namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema(
+ *     schema="ProfileStoreRequest",
+ *     type="object",
+ *     required={"date_of_birth", "name", "lastname"},
+ *     @OA\Property(property="date_of_birth", type="string", example="2014-11-03"),
+ *     @OA\Property(property="name", type="string", example="Slark"),
+ *     @OA\Property(property="lastname", type="string", example="Puchina"),
+ * )
+ */
+
 class StoreRequest extends FormRequest
 {
     /**

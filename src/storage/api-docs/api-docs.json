@@ -115,25 +115,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "allOf": [
-                                    {
-                                        "properties": {
-                                            "username": {
-                                                "type": "string",
-                                                "example": "Pudge"
-                                            },
-                                            "email": {
-                                                "type": "string",
-                                                "example": "freshmeat@gmail.com"
-                                            },
-                                            "password": {
-                                                "type": "string",
-                                                "example": "$53af(&$!)"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                ]
+                                "$ref": "#/components/schemas/AuthRegisterRequest"
                             }
                         }
                     }
@@ -146,22 +128,7 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer",
-                                                    "example": "11"
-                                                },
-                                                "username": {
-                                                    "type": "string",
-                                                    "example": "Pudge"
-                                                },
-                                                "email": {
-                                                    "type": "string",
-                                                    "example": "freshmeat@gmail.com",
-                                                    "nullable": true
-                                                }
-                                            },
-                                            "type": "object"
+                                            "$ref": "#/components/schemas/AuthRegisterRequest"
                                         }
                                     },
                                     "type": "object"
@@ -171,6 +138,48 @@
                     },
                     "409": {
                         "description": "A user with the provided username is already registered"
+                    }
+                }
+            }
+        },
+        "/api/profile/{id}": {
+            "get": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Get profile by ID",
+                "description": "Returns a single profile",
+                "operationId": "getProfileById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the profile",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Profile"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Profile not found"
                     }
                 }
             }
@@ -217,48 +226,7 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer",
-                                                    "example": "11"
-                                                },
-                                                "date_of_birth": {
-                                                    "type": "string",
-                                                    "example": "2001-11-11"
-                                                },
-                                                "name": {
-                                                    "type": "string",
-                                                    "example": "Slark"
-                                                },
-                                                "lastname": {
-                                                    "type": "string",
-                                                    "example": "YaPolzu"
-                                                },
-                                                "user": {
-                                                    "properties": {
-                                                        "id": {
-                                                            "type": "integer",
-                                                            "example": "11"
-                                                        },
-                                                        "username": {
-                                                            "type": "string",
-                                                            "example": "SlarkDotka"
-                                                        },
-                                                        "email": {
-                                                            "type": "string",
-                                                            "example": "freshmeat@gmail.com",
-                                                            "nullable": true
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                },
-                                                "avatar": {
-                                                    "type": "string",
-                                                    "example": "11",
-                                                    "nullable": true
-                                                }
-                                            },
-                                            "type": "object"
+                                            "$ref": "#/components/schemas/Profile"
                                         }
                                     },
                                     "type": "object"
@@ -270,6 +238,113 @@
                         "description": "Profile already exists for this user"
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AuthRegisterRequest": {
+                "required": [
+                    "username",
+                    "password"
+                ],
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "example": "SlarkDota"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "slark@gmail.com",
+                        "nullable": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "fasda15151"
+                    }
+                },
+                "type": "object"
+            },
+            "ProfileStoreRequest": {
+                "required": [
+                    "date_of_birth",
+                    "name",
+                    "lastname"
+                ],
+                "properties": {
+                    "date_of_birth": {
+                        "type": "string",
+                        "example": "2014-11-03"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Slark"
+                    },
+                    "lastname": {
+                        "type": "string",
+                        "example": "Puchina"
+                    }
+                },
+                "type": "object"
+            },
+            "ImageResource": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "example": "http://localhost:8080/storage/img.webp"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2024-01-20T19:45:30.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Profile": {
+                "properties": {
+                    "id": {
+                        "description": "Transform the resource into an array.",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "date_of_birth": {
+                        "type": "string",
+                        "example": "2001-14-01"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Slark"
+                    },
+                    "lastname": {
+                        "type": "string",
+                        "example": "Puchina"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserResource"
+                    },
+                    "avatar": {
+                        "$ref": "#/components/schemas/ImageResource"
+                    }
+                },
+                "type": "object"
+            },
+            "UserResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "username": {
+                        "type": "string",
+                        "example": "SlarkDota"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "slark@gmail.com",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
             }
         }
     }

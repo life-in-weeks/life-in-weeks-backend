@@ -31,16 +31,7 @@ use App\Services\Profile\StoreService;
  *         description="The user has successfully created profile",
  *         @OA\JsonContent(
  *             @OA\Property(property="data", type="object",
- *                 @OA\Property(property="id", type="integer", example="11"),
- *                 @OA\Property(property="date_of_birth", type="string", example="2001-11-11"),
- *                 @OA\Property(property="name", type="string", example="Slark"),
- *                 @OA\Property(property="lastname", type="string", example="YaPolzu"),
- *                 @OA\Property(property="user", type="object",
- *                     @OA\Property(property="id", type="integer", example="11"),
- *                     @OA\Property(property="username", type="string", example="SlarkDotka"),
- *                     @OA\Property(property="email", type="string", nullable=true, example="freshmeat@gmail.com")
- *                 ),
- *                 @OA\Property(property="avatar", type="string", nullable=true, example="11"),
+ *                 ref="#/components/schemas/Profile"
  *             )
  *         )
  *     ),

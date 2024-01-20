@@ -14,15 +14,7 @@ use App\Services\Auth\RegisterService;
  *     tags={"Auth"},
  *
  *     @OA\RequestBody(
- *         @OA\JsonContent(
- *             allOf={
- *                 @OA\Schema(
- *                     @OA\Property(property="username", type="string", example="Pudge"),
- *                     @OA\Property(property="email", type="string", example="freshmeat@gmail.com"),
- *                     @OA\Property(property="password", type="string", example="$53af(&$!)"),
- *                 )
- *             }
- *         )
+ *         @OA\JsonContent(ref="#/components/schemas/AuthRegisterRequest")
  *     ),
  *
  *     @OA\Response(
@@ -30,9 +22,7 @@ use App\Services\Auth\RegisterService;
  *         description="The user has successfully registered",
  *         @OA\JsonContent(
  *             @OA\Property(property="data", type="object",
- *                 @OA\Property(property="id", type="integer", example="11"),
- *                 @OA\Property(property="username", type="string", example="Pudge"),
- *                 @OA\Property(property="email", type="string", nullable=true, example="freshmeat@gmail.com"),
+ *                 ref="#/components/schemas/AuthRegisterRequest"
  *             )
  *         )
  *     ),
