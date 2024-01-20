@@ -19,7 +19,6 @@ use App\Services\Profile\StoreService;
  *             ref="#/components/schemas/ProfileStoreRequest"
  *         )
  *     ),
- *
  *     @OA\Response(
  *         response=201,
  *         description="The user has successfully created profile",
