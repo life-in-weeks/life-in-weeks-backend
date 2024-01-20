@@ -5,6 +5,175 @@
         "version": "1.0"
     },
     "paths": {
-        "/api": {}
+        "/api": {},
+        "/oauth/token": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get tokens",
+                "operationId": "de0f0bc776462cff6b7a46cc328af173",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "oneOf": [
+                                    {
+                                        "properties": {
+                                            "grant_type": {
+                                                "type": "string",
+                                                "example": "password"
+                                            },
+                                            "client_id": {
+                                                "type": "string",
+                                                "example": "ZGFfPErDzJONO2j9evX3_2mRdgqN"
+                                            },
+                                            "client_secret": {
+                                                "type": "string",
+                                                "example": "KMWZ_L8jgUKNrShC"
+                                            },
+                                            "username": {
+                                                "type": "string",
+                                                "example": "Pudge"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "$53af(&$!)"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    {
+                                        "properties": {
+                                            "grant_type": {
+                                                "type": "string",
+                                                "example": "refresh_token"
+                                            },
+                                            "refresh_token": {
+                                                "type": "string",
+                                                "example": "15f8017665b4094d15432da"
+                                            },
+                                            "client_id": {
+                                                "type": "string",
+                                                "example": "ZGFfPErDzJONO2j9evX3_2mRdgqN"
+                                            },
+                                            "client_secret": {
+                                                "type": "string",
+                                                "example": "KMWZ_L8jgUKNrShC"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "Bearer"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "example": "54000"
+                                        },
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "OiJKV1QiLCJhbG"
+                                        },
+                                        "refresh_token": {
+                                            "type": "string",
+                                            "example": "15f8017665b4094d15432da"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The user credentials were incorrect."
+                    }
+                }
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Registration",
+                "operationId": "e49cba58a6405534cdd7218d7499904a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "username": {
+                                                "type": "string",
+                                                "example": "Pudge"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "freshmeat@gmail.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "$53af(&$!)"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "The user has successfully registered",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "11"
+                                                },
+                                                "username": {
+                                                    "type": "string",
+                                                    "example": "Pudge"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "freshmeat@gmail.com",
+                                                    "nullable": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "A user with the provided username is already registered."
+                    }
+                }
+            }
+        }
     }
 }

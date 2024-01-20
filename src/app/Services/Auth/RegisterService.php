@@ -11,7 +11,12 @@ class RegisterService
             return User::create($data);
         } catch (\Exception $e) {
             return $e->getCode() == 23505
-                ? response()->json(["message" => $e->getMessage()], 409)
+                ? response()->json(
+                    [
+                        "message" => $e->getMessage(),
+                    ],
+                    409
+                )
                 : response()->json($e, 500);
         }
     }
