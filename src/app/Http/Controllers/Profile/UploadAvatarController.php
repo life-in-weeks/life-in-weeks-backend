@@ -32,7 +32,11 @@ use App\Services\Profile\UploadAvatarService;
  *     @OA\Response(
  *         response=201,
  *         description="Avatar uploaded successfully",
- *         @OA\JsonContent(ref="#/components/schemas/ImageResource")
+ *         @OA\JsonContent(
+ *             @OA\Property(property="data", type="object",
+ *                 ref="#/components/schemas/ImageResource"
+ *             )
+ *         )
  *     ),
  *     @OA\Response(
  *         response=422,

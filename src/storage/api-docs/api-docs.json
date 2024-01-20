@@ -181,7 +181,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ImageResource"
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ImageResource"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
