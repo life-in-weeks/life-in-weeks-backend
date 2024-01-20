@@ -4,6 +4,15 @@ namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema(
+ *     schema="ProfileUpdateRequest",
+ *     type="object",
+ *     @OA\Property(property="name", type="string", example="Slark"),
+ *     @OA\Property(property="lastname", type="string", example="Puchina"),
+ * )
+ */
+
 class UpdateRequest extends FormRequest
 {
     /**

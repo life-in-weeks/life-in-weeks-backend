@@ -265,6 +265,19 @@
                 },
                 "type": "object"
             },
+            "ImageUploadRequest": {
+                "properties": {
+                    "images": {
+                        "description": "Image to upload",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "binary"
+                        }
+                    }
+                },
+                "type": "object"
+            },
             "ProfileStoreRequest": {
                 "required": [
                     "date_of_birth",
@@ -276,6 +289,19 @@
                         "type": "string",
                         "example": "2014-11-03"
                     },
+                    "name": {
+                        "type": "string",
+                        "example": "Slark"
+                    },
+                    "lastname": {
+                        "type": "string",
+                        "example": "Puchina"
+                    }
+                },
+                "type": "object"
+            },
+            "ProfileUpdateRequest": {
+                "properties": {
                     "name": {
                         "type": "string",
                         "example": "Slark"
