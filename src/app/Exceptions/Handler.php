@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use App\Models\User;
+use Hash;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -37,5 +39,36 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        if (
+            $exception instanceof
+            \Laravel\Passport\Exceptions\OAuthServerException
+        ) {
+            if ($request->grant_type !== "password") {
+                return response()->json(
+                    [
+                        "message" => "Invalid grant type",
+                    ],
+                    400
+                );
+            }
+
+            $user = User::where("username", $request->username)->first();
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                return response()->json(
+                    [
+                        "message" => "Invalid username or password",
+                    ],
+                    422
+                );
+            } else {
+                return $exception->render($request);
+            }
+        }
+
+        return parent::render($request, $exception);
     }
 }
