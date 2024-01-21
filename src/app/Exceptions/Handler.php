@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
                     [
                         "message" => "Invalid username or password",
                     ],
-                    422
+                    403
                 );
             } else {
                 return $exception->render($request);

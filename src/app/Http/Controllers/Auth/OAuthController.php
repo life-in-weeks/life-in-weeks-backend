@@ -40,10 +40,13 @@ use App\Http\Controllers\Controller;
  *         )
  *     ),
  *     @OA\Response(
- *         response=400,
- *         description="The user credentials were incorrect.",
+ *         response=401,
+ *         description="Client authentication failed",
  *     ),
- *
+ *     @OA\Response(
+ *         response=403,
+ *         description="Invalid username or password",
+ *     ),
  * ),
  */
 class OAuthController extends Controller

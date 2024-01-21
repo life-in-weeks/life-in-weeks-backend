@@ -98,8 +98,11 @@
                             }
                         }
                     },
-                    "400": {
-                        "description": "The user credentials were incorrect."
+                    "401": {
+                        "description": "Client authentication failed"
+                    },
+                    "403": {
+                        "description": "Invalid username or password"
                     }
                 }
             }
