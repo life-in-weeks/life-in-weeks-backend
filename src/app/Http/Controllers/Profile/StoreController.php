@@ -13,7 +13,7 @@ use App\Services\Profile\StoreService;
  *     path="/api/profile",
  *     summary="Create profile of user",
  *     tags={"Profile"},
- *
+ *     security={{ "bearerAuth": {} }},
  *     @OA\RequestBody(
  *         @OA\JsonContent(
  *             ref="#/components/schemas/ProfileStoreRequest"

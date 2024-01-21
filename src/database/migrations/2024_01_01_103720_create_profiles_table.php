@@ -19,7 +19,8 @@ return new class extends Migration {
                 ->foreignId("user_id")
                 ->constrained()
                 ->on("users")
-                ->onDelete("cascade");
+                ->onDelete("cascade")
+                ->index();
             $table->timestamps();
             $table->softDeletes();
         });

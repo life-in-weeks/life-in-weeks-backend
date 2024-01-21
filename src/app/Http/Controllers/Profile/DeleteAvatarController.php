@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
  *     operationId="deleteAvatar",
  *     tags={"Profile"},
  *     summary="Delete user's avatar",
+ *     security={{ "bearerAuth": {} }},
  *     @OA\Response(
  *         response=204,
  *         description="Avatar deleted successfully",

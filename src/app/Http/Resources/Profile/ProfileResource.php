@@ -12,7 +12,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @return array
  * @OA\Schema(
  *     schema="Profile",
- *     @OA\Property(property="id", type="integer", example=1),
  *     @OA\Property(property="date_of_birth", type="string", example="2001-14-01"),
  *     @OA\Property(property="name", type="string", example="Slark"),
  *     @OA\Property(property="lastname", type="string", example="Puchina"),
@@ -27,7 +26,6 @@ class ProfileResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "id" => $this->id,
             "date_of_birth" => $this->date_of_birth,
             "name" => $this->name,
             "lastname" => $this->lastname,

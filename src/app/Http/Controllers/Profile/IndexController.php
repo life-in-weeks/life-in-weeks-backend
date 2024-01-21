@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
  *     tags={"Profile"},
  *     summary="Get all profiles",
  *     description="Returns a collection of profiles",
+ *     security={{ "bearerAuth": {} }},
  *     @OA\Response(
  *         response=200,
  *         description="Successful operation",

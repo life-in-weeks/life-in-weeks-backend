@@ -7,11 +7,17 @@ run:
 down:
 	docker compose down
 
-composerI:
+composer-i:
 	docker-compose exec app composer install
 
-migrate:
+db-migrate:
 	docker-compose exec app php artisan migrate
 
-seed:
+db-fresh:
+	docker-compose exec app php artisan migrate:fresh
+
+db-seed:
 	docker-compose exec app php artisan db:seed
+
+passport-keys:
+	docker-compose exec app php artisan passport:client --password

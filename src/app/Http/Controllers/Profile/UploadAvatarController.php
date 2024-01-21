@@ -14,6 +14,7 @@ use App\Services\Profile\UploadAvatarService;
  *     operationId="uploadAvatar",
  *     tags={"Profile"},
  *     summary="Upload user's avatar",
+ *     security={{ "bearerAuth": {} }},
  *     @OA\RequestBody(
  *         required=true,
  *         @OA\MediaType(

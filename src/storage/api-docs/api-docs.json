@@ -194,7 +194,12 @@
                     "422": {
                         "description": "Validation error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -206,7 +211,12 @@
                     "204": {
                         "description": "Avatar deleted successfully"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/profile": {
@@ -236,7 +246,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -275,7 +290,12 @@
                     "422": {
                         "description": "Validation error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -311,7 +331,12 @@
                     "422": {
                         "description": "Validation error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/profile/{id}": {
@@ -319,8 +344,7 @@
                 "tags": [
                     "Profile"
                 ],
-                "summary": "Get profile by ID",
-                "description": "Returns a single profile",
+                "summary": "Get profile by USER ID",
                 "operationId": "getProfileById",
                 "parameters": [
                     {
@@ -353,7 +377,12 @@
                     "404": {
                         "description": "Profile not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },
@@ -444,12 +473,8 @@
             },
             "Profile": {
                 "properties": {
-                    "id": {
-                        "description": "Transform the resource into an array.",
-                        "type": "integer",
-                        "example": 1
-                    },
                     "date_of_birth": {
+                        "description": "Transform the resource into an array.",
                         "type": "string",
                         "example": "2001-14-01"
                     },
@@ -492,6 +517,12 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
             }
         }
     }

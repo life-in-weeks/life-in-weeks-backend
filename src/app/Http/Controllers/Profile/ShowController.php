@@ -11,8 +11,8 @@ use App\Models\Profile;
  *     path="/api/profile/{id}",
  *     operationId="getProfileById",
  *     tags={"Profile"},
- *     summary="Get profile by ID",
- *     description="Returns a single profile",
+ *     summary="Get profile by USER ID",
+ *     security={{ "bearerAuth": {} }},
  *     @OA\Parameter(
  *         name="id",
  *         in="path",
@@ -42,8 +42,9 @@ use App\Models\Profile;
 
 class ShowController extends Controller
 {
-    public function __invoke(Profile $profile)
+    public function __invoke($userId)
     {
+        $profile = Profile::where("user_id", $userId)->first();
         return new ProfileResource($profile);
     }
 }

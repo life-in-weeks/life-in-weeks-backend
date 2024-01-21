@@ -13,6 +13,7 @@ use App\Models\Profile;
  *     operationId="updateProfile",
  *     tags={"Profile"},
  *     summary="Update user's profile",
+ *     security={{ "bearerAuth": {} }},
  *     @OA\RequestBody(
  *         @OA\JsonContent(ref="#/components/schemas/ProfileUpdateRequest")
  *     ),
