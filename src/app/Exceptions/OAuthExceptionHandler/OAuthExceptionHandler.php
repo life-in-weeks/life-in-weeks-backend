@@ -38,7 +38,7 @@ class OAuthExceptionHandler
         if (!$user || !Hash::check($this->request->password, $user->password)) {
             $this->response = response()->json(
                 ["message" => "Invalid username or password"],
-                403
+                401
             );
         }
 
