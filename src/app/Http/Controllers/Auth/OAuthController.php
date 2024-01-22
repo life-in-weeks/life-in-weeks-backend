@@ -16,8 +16,8 @@ use App\Http\Controllers\Controller;
  *                     @OA\Property(property="grant_type", type="string", example="password"),
  *                     @OA\Property(property="client_id", type="string", example="ZGFfPErDzJONO2j9evX3_2mRdgqN"),
  *                     @OA\Property(property="client_secret", type="string", example="KMWZ_L8jgUKNrShC"),
- *                     @OA\Property(property="username", type="string", example="Pudge"),
- *                     @OA\Property(property="password", type="string", example="$53af(&$!)"),
+ *                     @OA\Property(property="username", type="string", example="teesst11"),
+ *                     @OA\Property(property="password", type="string", example="12345678"),
  *                 ),
  *                 @OA\Schema(
  *                     @OA\Property(property="grant_type", type="string", example="refresh_token"),
@@ -41,11 +41,7 @@ use App\Http\Controllers\Controller;
  *     ),
  *     @OA\Response(
  *         response=401,
- *         description="Client authentication failed",
- *     ),
- *     @OA\Response(
- *         response=401,
- *         description="Invalid username or password",
+ *         description="Client authentication failed or Invalid username or password",
  *     ),
  * ),
  */

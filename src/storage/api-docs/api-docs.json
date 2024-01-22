@@ -34,11 +34,11 @@
                                             },
                                             "username": {
                                                 "type": "string",
-                                                "example": "Pudge"
+                                                "example": "teesst11"
                                             },
                                             "password": {
                                                 "type": "string",
-                                                "example": "$53af(&$!)"
+                                                "example": "12345678"
                                             }
                                         },
                                         "type": "object"
@@ -99,10 +99,7 @@
                         }
                     },
                     "401": {
-                        "description": "Client authentication failed"
-                    },
-                    "403": {
-                        "description": "Invalid username or password"
+                        "description": "Client authentication failed or Invalid username or password"
                     }
                 }
             }
