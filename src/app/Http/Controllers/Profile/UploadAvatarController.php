@@ -19,15 +19,7 @@ use App\Services\Profile\UploadAvatarService;
  *         required=true,
  *         @OA\MediaType(
  *             mediaType="multipart/form-data",
- *             @OA\Schema(
- *                 type="object",
- *                 required={"images"},
- *                 @OA\Property(
- *                     property="images",
- *                     type="array",
- *                     @OA\Items(type="string", format="binary", description="Image file to be uploaded")
- *                 ),
- *             )
+ *             schema={"$ref": "#/components/schemas/ImageUploadRequest"}
  *         )
  *     ),
  *     @OA\Response(

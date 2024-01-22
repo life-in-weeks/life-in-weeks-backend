@@ -7,8 +7,11 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * @OA\Schema(
  *     schema="ImageUploadRequest",
- *     type="object",
- *     @OA\Property(property="images", type="array", @OA\Items(type="string", format="binary"), description="Image to upload"),
+ *     @OA\Property(
+ *         property="images[]",
+ *         type="array",
+ *         @OA\Items(type="string", format="binary", description="Image file to be uploaded")
+ *     ),
  * )
  */
 

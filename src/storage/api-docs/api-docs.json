@@ -157,20 +157,7 @@
                     "content": {
                         "multipart/form-data": {
                             "schema": {
-                                "required": [
-                                    "images"
-                                ],
-                                "properties": {
-                                    "images": {
-                                        "type": "array",
-                                        "items": {
-                                            "description": "Image file to be uploaded",
-                                            "type": "string",
-                                            "format": "binary"
-                                        }
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/ImageUploadRequest"
                             }
                         }
                     }
@@ -412,10 +399,10 @@
             },
             "ImageUploadRequest": {
                 "properties": {
-                    "images": {
-                        "description": "Image to upload",
+                    "images[]": {
                         "type": "array",
                         "items": {
+                            "description": "Image file to be uploaded",
                             "type": "string",
                             "format": "binary"
                         }
