@@ -1,6 +1,5 @@
 FROM php:8.2.11-fpm
 
-# Install composer
 RUN echo "\e[1;33mInstall COMPOSER\e[0m"
 RUN cd /tmp \
     && curl -sS https://getcomposer.org/installer | php \
@@ -38,3 +37,5 @@ RUN apt-get update; \
     apt-get install -y libmagickwand-dev; \
     pecl install imagick; \
     docker-php-ext-enable imagick;
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
