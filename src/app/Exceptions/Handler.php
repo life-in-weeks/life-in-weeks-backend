@@ -7,6 +7,7 @@ use App\Models\User;
 use Hash;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Laravel\Passport\Exceptions\OAuthServerException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,10 +45,7 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $exception)
     {
-        if (
-            $exception instanceof
-            \Laravel\Passport\Exceptions\OAuthServerException
-        ) {
+        if ($exception instanceof OAuthServerException) {
             $oAuthExceptionHandle = new OAuthExceptionHandler(
                 $request,
                 $exception
