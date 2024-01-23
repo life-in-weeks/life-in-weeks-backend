@@ -41,7 +41,7 @@ use App\Http\Controllers\Controller;
  *     ),
  *     @OA\Response(
  *         response=401,
- *         description="Client authentication failed or Invalid username or password",
+ *         description="Client authentication failed or invalid credentials provided",
  *     ),
  * ),
  */
