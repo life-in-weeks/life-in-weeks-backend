@@ -13,7 +13,7 @@ class RegisterService
             return $e->getCode() == 23505
                 ? response()->json(
                     [
-                        "message" => "duplicate key value username",
+                        "message" => "User with this username or email already exists",
                     ],
                     409
                 )
