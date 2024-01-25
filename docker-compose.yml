@@ -33,7 +33,7 @@ services:
         volumes:
             - ./src:/var/www
         ports:
-            - "9001:9001"
+            - "9000:9000"
         working_dir: /var/www
 
     pgadmin:
