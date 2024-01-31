@@ -23,7 +23,7 @@ use App\Services\Profile\UploadAvatarService;
  *         )
  *     ),
  *     @OA\Response(
- *         response=201,
+ *         response=200,
  *         description="Avatar uploaded successfully",
  *         @OA\JsonContent(
  *             @OA\Property(property="data", type="object",
