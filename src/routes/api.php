@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
-use Illuminate\Http\Request;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +18,20 @@ Route::group(
     ["namespace" => "App\Http\Controllers\Auth", "prefix" => "auth"],
     function () {
         Route::post("/register", RegisterController::class);
+    }
+);
+
+Route::group(
+    [
+        "namespace" => "\App\Http\Controllers\Profile",
+        "middleware" => "auth:api",
+    ],
+    function () {
+        Route::get("/profile", IndexController::class);
+        Route::post("/profile/avatar", UploadAvatarController::class);
+        Route::post("/profile", StoreController::class);
+        Route::get("/profile/{profile}", ShowController::class);
+        Route::patch("/profile", UpdateController::class);
+        Route::delete("/profile/avatar", DeleteAvatarController::class);
     }
 );

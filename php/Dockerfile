@@ -1,35 +1,39 @@
 FROM php:8.2.11-fpm
 
-# Install composer
-RUN echo "\e[1;33mInstall COMPOSER\e[0m"
-RUN cd /tmp \
-    && curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer
+COPY ./custom-php.ini /usr/local/etc/php/conf.d/custom-php.ini
 
-RUN docker-php-ext-install pdo pdo_mysql
-
-RUN apt-get update
-
-RUN apt-get -y install apt-utils nano wget dialog vim
-
-RUN echo "\e[1;33mInstall important libraries\e[0m"
-RUN apt-get -y install --fix-missing \
-    apt-utils \
-    build-essential \
-    git \
-    curl \
-    libcurl4 \
-    libcurl4-openssl-dev \
-    zlib1g-dev \
-    libzip-dev \
-    zip \
-    libbz2-dev \
-    locales \
-    libmcrypt-dev \
-    libicu-dev \
-    libonig-dev \
-    libxml2-dev
-
-RUN apt-get install -y libpq-dev \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo pdo_pgsql pgsql
+RUN set -eux; \
+    echo "\e[1;33mInstall COMPOSER\e[0m"; \
+    cd /tmp \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
+    \
+    apt-get update && apt-get install -y --fix-missing \
+        apt-utils \
+        nano \
+        wget \
+        dialog \
+        vim \
+        build-essential \
+        git \
+        curl \
+        libcurl4 \
+        libcurl4-openssl-dev \
+        zlib1g-dev \
+        libzip-dev \
+        zip \
+        libbz2-dev \
+        locales \
+        libmcrypt-dev \
+        libicu-dev \
+        libonig-dev \
+        libpq-dev \
+        libmagickwand-dev \
+        libxml2-dev; \
+    \
+    echo "\e[1;33mInstall important libraries\e[0m"; \
+    docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql; \
+    docker-php-ext-install pdo pdo_pgsql pgsql; \
+    pecl install imagick; \
+    docker-php-ext-enable imagick; \
+    \
+    apt-get clean && rm -rf /var/lib/apt/lists/*;

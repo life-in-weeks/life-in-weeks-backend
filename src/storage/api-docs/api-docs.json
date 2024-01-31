@@ -1,0 +1,516 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Life In Weeks",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api": {},
+        "/oauth/token": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get tokens",
+                "operationId": "be80d0c392c6993a59bd1a2e1801c3d2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "oneOf": [
+                                    {
+                                        "properties": {
+                                            "grant_type": {
+                                                "type": "string",
+                                                "example": "password"
+                                            },
+                                            "client_id": {
+                                                "type": "string",
+                                                "example": "ZGFfPErDzJONO2j9evX3_2mRdgqN"
+                                            },
+                                            "client_secret": {
+                                                "type": "string",
+                                                "example": "KMWZ_L8jgUKNrShC"
+                                            },
+                                            "username": {
+                                                "type": "string",
+                                                "example": "teesst11"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "12345678"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    {
+                                        "properties": {
+                                            "grant_type": {
+                                                "type": "string",
+                                                "example": "refresh_token"
+                                            },
+                                            "refresh_token": {
+                                                "type": "string",
+                                                "example": "15f8017665b4094d15432da"
+                                            },
+                                            "client_id": {
+                                                "type": "string",
+                                                "example": "ZGFfPErDzJONO2j9evX3_2mRdgqN"
+                                            },
+                                            "client_secret": {
+                                                "type": "string",
+                                                "example": "KMWZ_L8jgUKNrShC"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "Bearer"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "example": "54000"
+                                        },
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "OiJKV1QiLCJhbG"
+                                        },
+                                        "refresh_token": {
+                                            "type": "string",
+                                            "example": "15f8017665b4094d15432da"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Client authentication failed or Invalid username or password"
+                    }
+                }
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Registration",
+                "operationId": "e49cba58a6405534cdd7218d7499904a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthRegisterRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "The user has successfully registered",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AuthRegisterRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "A user with the provided username is already registered"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/profile/avatar": {
+            "post": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Upload user's avatar",
+                "operationId": "uploadAvatar",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ImageUploadRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Avatar uploaded successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ImageResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Delete user's avatar",
+                "operationId": "deleteAvatar",
+                "responses": {
+                    "204": {
+                        "description": "Avatar deleted successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/profile": {
+            "get": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Get all profiles",
+                "description": "Returns a collection of profiles",
+                "operationId": "getProfiles",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Profile"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Create profile of user",
+                "operationId": "d18064348bf3a6f8f1acdd465b861e6d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "The user has successfully created profile",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Profile"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Profile already exists for this user"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Update user's profile",
+                "operationId": "updateProfile",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Profile updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Profile"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/profile/{id}": {
+            "get": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Get profile by USER ID",
+                "operationId": "getProfileById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the profile",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Profile"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Profile not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AuthRegisterRequest": {
+                "required": [
+                    "username",
+                    "password"
+                ],
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "example": "SlarkDota"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "slark@gmail.com",
+                        "nullable": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "fasda15151"
+                    }
+                },
+                "type": "object"
+            },
+            "ImageUploadRequest": {
+                "properties": {
+                    "images[]": {
+                        "type": "array",
+                        "items": {
+                            "description": "Image file to be uploaded",
+                            "type": "string",
+                            "format": "binary"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "ProfileStoreRequest": {
+                "required": [
+                    "date_of_birth",
+                    "name",
+                    "lastname"
+                ],
+                "properties": {
+                    "date_of_birth": {
+                        "type": "string",
+                        "example": "2014-11-03"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Slark"
+                    },
+                    "lastname": {
+                        "type": "string",
+                        "example": "Puchina"
+                    }
+                },
+                "type": "object"
+            },
+            "ProfileUpdateRequest": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "Slark"
+                    },
+                    "lastname": {
+                        "type": "string",
+                        "example": "Puchina"
+                    }
+                },
+                "type": "object"
+            },
+            "ImageResource": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "example": "http://localhost:8080/storage/img.webp"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2024-01-20T19:45:30.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Profile": {
+                "properties": {
+                    "date_of_birth": {
+                        "description": "Transform the resource into an array.",
+                        "type": "string",
+                        "example": "2001-14-01"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Slark"
+                    },
+                    "lastname": {
+                        "type": "string",
+                        "example": "Puchina"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserResource"
+                    },
+                    "avatar": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/ImageResource"
+                            }
+                        ],
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "UserResource": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "username": {
+                        "type": "string",
+                        "example": "SlarkDota"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "slark@gmail.com",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
