@@ -1,5 +1,7 @@
 FROM php:8.2.11-fpm
 
+COPY ./custom-php.ini /usr/local/etc/php/conf.d/custom-php.ini
+
 RUN set -eux; \
     echo "\e[1;33mInstall COMPOSER\e[0m"; \
     cd /tmp \
@@ -28,7 +30,6 @@ RUN set -eux; \
         libmagickwand-dev \
         libxml2-dev; \
     \
-    ADD ./custom-php.ini /usr/local/etc/php/conf.d/custom-php.ini; \
     echo "\e[1;33mInstall important libraries\e[0m"; \
     docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql; \
     docker-php-ext-install pdo pdo_pgsql pgsql; \
