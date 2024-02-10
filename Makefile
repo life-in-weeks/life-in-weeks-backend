@@ -1,3 +1,5 @@
+project-init: build run composer-i db-migrate db-seed storage-link
+
 build:
 	docker-compose up -d --build
 
@@ -21,3 +23,6 @@ db-seed:
 
 passport-keys:
 	docker-compose exec app php artisan passport:client --password
+
+storage-link:
+	docker-compose exec app php artisan storage:link
