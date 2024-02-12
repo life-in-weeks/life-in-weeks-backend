@@ -79,8 +79,11 @@ The application is available at http://localhost:8080/
 3. Create a Password Grant Client
 
     ```bash
-    make passport-keys
+    make passport-install
     ```
+
+- The application is available at http://localhost:8080/
+- The documentation REST API is available at http://localhost:8080/api/documentation
 
 
 #### Project Description: Life in Weeks Backend REST API
