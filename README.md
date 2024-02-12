@@ -1,59 +1,5 @@
 <h1 align="center">Life in Weeks</h1>
 
-## Installation and Running Life-In-Weeks-backend
-
-1. Start Docker containers:
-
-    ```bash
-    docker-compose up -d --build
-    ```
-
-2. Install Composer dependencies:
-
-    ```bash
-    docker-compose exec app composer install
-    ```
-
-3. Modify access permissions (optional):
-
-    ```bash
-    sudo chmod 777 -R ./
-    ```
-
-4. Launch containers:
-
-    ```bash
-    docker compose up -d
-    ```
-
-5. lets to src
-
-    ```bash
-    cd src
-    ```
-
-6. Copy .env.example to .env
-
-    ```bash
-    cp .env.example .env
-    ```
-
-7. set migration:
-
-    ```bash
-    docker-compose exec app php artisan migrate
-    ```
-
-8. Modify access permissions (optional):
-
-    ```bash
-    sudo chmod 777 -R ./
-    ```
-
----
-
-The application is available at http://localhost:8080/
-
 ## Development Setup
 
 ### Prerequisites
@@ -76,7 +22,7 @@ The application is available at http://localhost:8080/
     make project-init
     ```
    
-3. Create a Password Grant Client
+3. install Passport
 
     ```bash
     make passport-install
