@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-- Install [Node.js](https://nodejs.org/en) which includes [Node Package Manager][npm](https://docs.npmjs.com/getting-started)
+- Install [Node.js](https://nodejs.org/en)
 - Install [pnpm](https://pnpm.io/) by following the installation [instructions](https://pnpm.io/installation)
 - Install [Docker](https://www.docker.com/) by following the installation [instructions](https://www.docker.com/get-started/)
 
