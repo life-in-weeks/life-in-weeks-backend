@@ -1,4 +1,4 @@
-project-init: cp-docker-env cp-laravel-env cp-laravel-env build run composer-i db-migrate db-seed storage-link gen-swagger rules
+project-init: cp-docker-env cp-laravel-env build run composer-i db-migrate db-seed rules storage-link gen-swagger
 
 build:
 	docker-compose up -d --build
