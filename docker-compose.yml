@@ -5,7 +5,7 @@ services:
         image: nginx:alpine
         container_name: nginx
         ports:
-            - "8080:80"
+            - "${NGINX_HOST_PORT}"
         volumes:
             - ./src:/var/www
             - ./nginx/conf.d/:/etc/nginx/conf.d/
@@ -19,11 +19,11 @@ services:
         volumes:
             - ./postgresql/data:/var/lib/postgresql/data
         ports:
-            - "5432:5432"
+            - "${POSTGRES_HOST_PORT}"
         environment:
-            POSTGRES_DB: life-in-weeks
-            POSTGRES_USER: root
-            POSTGRES_PASSWORD: password
+            POSTGRES_DB: "${POSTGRES_DB}"
+            POSTGRES_USER: "${POSTGRES_USER}"
+            POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
 
     app:
         container_name: life-in-weeks
@@ -33,16 +33,16 @@ services:
         volumes:
             - ./src:/var/www
         ports:
-            - "9000:9000"
+            - "${APP_HOST_PORT}"
         working_dir: /var/www
 
     pgadmin:
         image: dpage/pgadmin4
         container_name: pgAdmin
         ports:
-            - "5050:80"
+            - "${PGADMIN_HOST_PORT}"
         depends_on:
             - db
         environment:
-            PGADMIN_DEFAULT_EMAIL: admin.a@gmail.com
-            PGADMIN_DEFAULT_PASSWORD: password
+            PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
+            PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"

@@ -1,58 +1,38 @@
-# Installation and Running Life-in-weeks-backend
+<h1 align="center">Life in Weeks</h1>
 
-1. Start Docker containers:
+## Development Setup
 
-    ```bash
-    docker-compose up -d --build
-    ```
+### Prerequisites
 
-2. Install Composer dependencies:
+- Install [Node.js](https://nodejs.org/en)
+- Install [pnpm](https://pnpm.io/) by following the installation [instructions](https://pnpm.io/installation)
+- Install [Docker](https://www.docker.com/) by following the installation [instructions](https://www.docker.com/get-started/)
 
-    ```bash
-    docker-compose exec app composer install
-    ```
+### Setting Up a Project
 
-3. Modify access permissions (optional):
+1. Clone this repository
 
     ```bash
-    sudo chmod 777 -R ./
+    git clone git@github.com:life-in-weeks/life-in-weeks-backend.git
     ```
-
-4. Launch containers:
+   
+2. Init project by Makefile command
 
     ```bash
-    docker compose up -d
+    make project-init
     ```
-
-5. lets to src
+   
+3. install Passport
 
     ```bash
-    cd src
+    make passport-install
     ```
 
-6. Copy .env.example to .env
+- The application is available at http://localhost:8080/
+- The documentation REST API is available at http://localhost:8080/api/documentation
 
-    ```bash
-    cp .env.example .env
-    ```
 
-7. set migration:
-
-    ```bash
-    docker-compose exec app php artisan migrate
-    ```
-
-8. Modify access permissions (optional):
-
-    ```bash
-    sudo chmod 777 -R ./
-    ```
-
----
-
-The application is available at http://localhost:8080/
-
-### Project Description: Life in Weeks Backend REST API
+#### Project Description: Life in Weeks Backend REST API
 
 The Life in Weeks Backend REST API serves as the backend infrastructure
 to facilitate the functionalities required for the Life in Weeks application.

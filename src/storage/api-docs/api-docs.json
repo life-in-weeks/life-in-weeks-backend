@@ -99,7 +99,7 @@
                         }
                     },
                     "401": {
-                        "description": "Client authentication failed or Invalid username or password"
+                        "description": "Client authentication failed or invalid credentials provided"
                     }
                 }
             }
@@ -163,7 +163,7 @@
                     }
                 },
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Avatar uploaded successfully",
                         "content": {
                             "application/json": {

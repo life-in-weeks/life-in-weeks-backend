@@ -16,7 +16,7 @@ use App\Models\Profile;
  *     @OA\Parameter(
  *         name="id",
  *         in="path",
- *         description="ID of the profile",
+ *         description="ID of the user",
  *         required=true,
  *         @OA\Schema(
  *             type="integer",
