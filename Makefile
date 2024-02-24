@@ -41,3 +41,6 @@ passport-install:
 
 gen-swagger:
 	docker-compose exec app php artisan l5-swagger:generate
+
+test:
+	docker-compose exec app php artisan test
