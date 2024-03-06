@@ -45,6 +45,9 @@ class ShowController extends Controller
     public function __invoke($userId)
     {
         $profile = Profile::where("user_id", $userId)->first();
-        return new ProfileResource($profile);
+
+        return $profile instanceof Profile
+            ? new ProfileResource($profile)
+            : $profile;
     }
 }

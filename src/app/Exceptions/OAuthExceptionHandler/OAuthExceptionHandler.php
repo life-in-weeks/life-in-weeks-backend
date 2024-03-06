@@ -3,8 +3,8 @@
 namespace App\Exceptions\OAuthExceptionHandler;
 
 use App\Models\User;
-use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\Client;
 
 class OAuthExceptionHandler
